@@ -1,0 +1,28 @@
+{
+  "name": "temelm.com",
+  "version": "4.0.0",
+  "description": "https://temelm.com",
+  "keywords": [],
+  "homepage": "https://github.com/temelm/temelm.com#readme",
+  "bugs": "https://github.com/temelm/temelm.com/issues",
+  "author": "Mustafa Temel",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/temelm/temelm.com.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "clean": "rm -rf dist",
+    "cleanbuild": "npm run clean && npm run build",
+    "cleanpreview": "npm run cleanbuild && npm run preview"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^2.0.2",
+    "svelte": "^3.55.1",
+    "vite": "^4.1.0"
+  },
+  "private": true,
+  "type": "module"
+}
