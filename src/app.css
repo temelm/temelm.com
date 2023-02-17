@@ -1,0 +1,58 @@
+:root {
+  --border-radius: 0.125rem;
+  --color-accent: teal;
+  --color-background: whitesmoke;
+  --color-bcakground-PLACEHOLDER: white; /* @TODO: CHANGE VARIABLE NAME */
+  --color-border: #C0C0C0;
+  --color-text: #404040;
+  --font-family: "Roboto", sans-serif;
+  --font-weight: 300;
+  --font-weight-bold: 500;
+  --max-width: 960px;
+  --max-width-portfolio-item-logo: 320px;
+  --min-width: 320px;
+  --spacing-large: 2rem;
+  --spacing-medium: 1rem;
+  --spacing-small: 0.5rem;
+
+  background-color: var(--color-background);
+  color: var(--color-text);
+  color-scheme: light dark;
+  font-family: var(--font-family);
+  font-size: 1.25rem;
+  font-weight: var(--font-weight);
+  line-height: 1;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-width: var(--min-width);
+}
+
+section {
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--spacing-large);
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-large);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-accent: #FCE441;
+    --color-background: #404040;
+    --color-bcakground-PLACEHOLDER: #505050; /* @TODO: CHANGE VARIABLE NAME */
+    --color-border: gray;
+    --color-text: whitesmoke;
+  }
+}
