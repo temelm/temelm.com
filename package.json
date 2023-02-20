@@ -15,7 +15,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist",
-    "cleanbuild": "npm run clean && npm run build",
+    "cleanbuild": "npm run clean && npm run build && sh restructure-dist.sh",
     "cleanpreview": "npm run cleanbuild && npm run preview"
   },
   "devDependencies": {
