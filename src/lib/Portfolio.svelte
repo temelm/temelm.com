@@ -109,10 +109,10 @@
         <Link
           href={portfolioItem.url}
           target="_blank"
-          className="PLACEHOLDER"
           title="Opens in a new tab"
           src={portfolioItem.logo}
           alt={portfolioItem.title}
+          --img-max-width="256px"
         />
       </div>
       <div class="portfolio-item-details">
@@ -120,7 +120,7 @@
           <h3>
             {portfolioItem.title}
             {#if portfolioItem.subTitle}
-              <span>({portfolioItem.subTitle})</span>
+              <span>{portfolioItem.subTitle}</span>
             {/if}
           </h3>
         </div>
@@ -147,7 +147,13 @@
           </ul>
         </div>
         <div class="portfolio-item-link">
-          <Link href={portfolioItem.url} target="_blank" className="button" text="Visit site" />
+          <Link
+            href={portfolioItem.url}
+            target="_blank"
+            className="button"
+            title="Opens in a new tab"
+            text="Visit site"
+          />
         </div>
       </div>
     </div>
@@ -156,10 +162,11 @@
 
 <style>
   .portfolio-item {
-    background-color: var(--color-bcakground-PLACEHOLDER);
+    background-color: var(--background-color-secondary);
     border-radius: var(--border-radius);
-    margin: 0 auto var(--spacing-large) auto;
-    max-width: var(--max-width-portfolio-item-logo);
+    box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.25);
+    margin: 0 auto var(--spacing-lg) auto;
+    padding: var(--spacing-md);
     text-align: left;
   }
 
@@ -168,16 +175,16 @@
   }
 
   .portfolio-item-logo {
-    display: flex;
-  }
-
-  .portfolio-item-details {
-    line-height: 1.5;
-    padding: var(--spacing-medium);
+    display: grid;
+    place-items: center;
   }
 
   .portfolio-item-details > div:not(:last-child) {
-    margin-bottom: var(--spacing-small);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .portfolio-item-date, .portfolio-item-role, .portfolio-item-tech {
+    line-height: 1.5;
   }
 
   h3 {
@@ -193,45 +200,40 @@
   h4 {
     font-size: 1rem;
     font-weight: var(--font-weight-bold);
-    margin-bottom: var(--spacing-small);
     opacity: 0.5;
   }
 
   ul {
-    list-style-type: square;
-    padding-left: var(--spacing-medium);
+    padding-left: var(--spacing-md);
   }
 
-  li {
+  ul li {
     font-size: 0.875rem;
   }
 
-  .portfolio-item-link {
-    text-align: center;
-  }
-
-  @media screen and (min-width: 960px) {
+  @media screen and (max-width: 767px) {
     .portfolio-item {
-      display: flex;
-      max-width: calc(960px - var(--spacing-large));
+      max-width: var(--min-width);
     }
 
-    .portfolio-item-details {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      position: relative;
-    }
-
-    .portfolio-item-tech ul {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+    .portfolio-item-logo {
+      margin-bottom: var(--spacing-md);
     }
 
     .portfolio-item-link {
-      position: absolute;
-      right: var(--spacing-medium);
-      top: var(--spacing-medium);
+      text-align: center;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .portfolio-item {
+      display: grid;
+      grid-template-columns: 3fr 4fr;
+      max-width: calc(var(--max-width) * 0.9);
+    }
+
+    .portfolio-item-details {
+      padding-left: var(--spacing-md);
     }
   }
 </style>

@@ -28,22 +28,26 @@
   }
 
   .contact-form-field:not(:last-child) {
-    margin-bottom: var(--spacing-medium);
+    margin-bottom: var(--spacing-md);
+  }
+
+  input, textarea, button {
+    box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.25);
   }
 
   input, textarea {
-    background-color: var(--color-bcakground-PLACEHOLDER);
-    border: 1px solid var(--color-border);
+    background-color: var(--background-color-secondary);
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     font-family: var(--font-family);
     font-size: 1rem;
     font-weight: var(--font-weight);
-    padding: var(--spacing-small);
+    padding: var(--spacing-sm);
     width: 100%;
   }
 
   input:focus, textarea:focus {
-    outline-color: var(--color-accent);
+    outline-color: var(--accent-color);
   }
 
   textarea {
@@ -52,13 +56,13 @@
   }
 
   button {
-    background-color: var(--color-accent);
+    background-color: var(--accent-color);
     border: none;
     border-radius: var(--border-radius);
-    color: var(--color-background);
+    color: var(--background-color-primary);
     cursor: pointer;
     font-size: 1rem;
-    padding: var(--spacing-medium) var(--spacing-large);
+    padding: var(--spacing-md) var(--spacing-lg);
     text-align: center;
     transition: transform 0.15s ease-in-out;
   }

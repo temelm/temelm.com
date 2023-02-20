@@ -4,6 +4,7 @@
   export let rel = undefined;
   export let className = undefined;
   export let title = undefined;
+  export let onClick = undefined;
   export let src = undefined;
   export let alt = undefined;
   export let text = undefined;
@@ -12,24 +13,26 @@
     rel = 'noopener noreferrer';
   }
 
-  function handleClick (event) {
-    if (/^#/.test(href)) {
+  if (/^#/.test(href) && typeof onClick !== 'function') {
+    onClick = function (event) {
       event.preventDefault();
-      let offsetTop = 0;
+      let top = 0;
       if (href !== '#') {
         const element = document.querySelector(href);
         const elementTop = element.getBoundingClientRect().top;
-        offsetTop = window.scrollY + elementTop - 32;
+        const elementMarginTop = parseInt(getComputedStyle(element).marginTop);
+        const elementPaddingTop = parseInt(getComputedStyle(element).paddingTop);
+        top = scrollY + elementTop - elementMarginTop - elementPaddingTop;
       }
-      window.scrollTo({
-        top: offsetTop,
+      scrollTo({
+        top,
         behavior: 'smooth'
       });
     }
   }
 </script>
 
-<a {href} {target} {rel} class={className} {title} on:click={handleClick}>
+<a {href} {target} {rel} class={className} {title} on:click={onClick}>
   {#if src}
     <img {src} {alt} />
   {/if}
@@ -39,66 +42,53 @@
 </a>
 
 <style>
-  :root {
-    --color-button: var(--color-background);
-    --color-button-border: var(--color-accent);
-    --color-button-hover: var(--color-accent);
-    --color-button-text: var(--color-accent);
-    --color-button-text-hover: var(--color-background);
-    --color-link-text: var(--color-text);
-  }
-
   a {
+    --link-button-border-color: var(--accent-color);
+    --link-button-color: var(--background-color-primary);
+    --link-button-hover-color: var(--accent-color);
+    --link-button-hover-text-color: var(--background-color-primary);
+    --link-button-text-color: var(--accent-color);
+    --link-img-max-width: var(--img-max-width, 2rem);
+    --link-text-color: var(--text-color);
+
     align-items: center;
-    color: var(--color-link-text);
+    color: var(--link-text-color);
     display: inline-flex;
     text-decoration-color: transparent;
-    text-underline-offset: 0.25rem;
+    text-underline-offset: var(--spacing-xs);
     transition: text-decoration-color 0.15s ease-in-out, transform 0.15s ease-in-out;
   }
 
   a:hover {
-    text-decoration-color: var(--color-link-text);
+    text-decoration-color: var(--link-text-color);
     transform: scale(1.05);
   }
 
-  a img {
-    max-width: 2rem;
-    width: 100%;
-  }
-
-  /* @TODO: CHANGE CLASS NAME */
-  a.PLACEHOLDER img {
-    border-radius: var(--border-radius);
-    max-width: var(--max-width-portfolio-item-logo);
-  }
-
-  a:has(img) span {
-    margin-left: var(--spacing-small);
-  }
-
   a.button {
-    background-color: var(--color-button);
-    border: 1px solid var(--color-button-border);
+    background-color: var(--link-button-color);
+    border: 1px solid var(--link-button-border-color);
     border-radius: var(--border-radius);
-    color: var(--color-button-text);
-    padding: var(--spacing-small);
+    box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.25);
+    color: var(--link-button-text-color);
+    padding: var(--spacing-sm);
     text-align: center;
     transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out
       , transform 0.15s ease-in-out;
   }
 
   a.button:hover {
-    background-color: var(--color-button-hover);
-    color: var(--color-button-text-hover);
+    background-color: var(--link-button-hover-color);
+    color: var(--link-button-hover-text-color);
     text-decoration: none;
   }
 
-  @media screen and (min-width: 960px) {
-    a.PLACEHOLDER img {
-      max-width: 400px;
-    }
+  a img {
+    border-radius: var(--border-radius);
+    max-width: var(--link-img-max-width);
+    width: 100%;
   }
 
-  
+  a:has(img) span {
+    margin-left: var(--spacing-sm);
+  }
 </style>

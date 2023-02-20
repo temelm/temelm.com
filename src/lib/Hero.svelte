@@ -7,6 +7,6 @@
   h2 {
     font-size: 1.5rem;
     font-weight: var(--font-weight);
-    line-height: 1.5;
+    line-height: 1.25;
   }
 </style>

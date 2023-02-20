@@ -18,12 +18,11 @@
 
 <style>
   :root {
-    --color-header: rgb(245, 245, 245, 0.95);
+    --header-color: rgb(245, 245, 245, 0.95);
   }
 
   header {
-    background-color: var(--color-header);
-    border-bottom: 1px solid var(--color-border);
+    background-color: var(--header-color);
     position: sticky;
     top: 0;
     width: 100%;
@@ -36,7 +35,7 @@
     justify-content: space-between;
     margin: 0 auto;
     max-width: var(--max-width);
-    padding: var(--spacing-medium);
+    padding: var(--spacing-md);
   }
 
   header nav ul {
@@ -45,16 +44,16 @@
 
   header nav ul li {
     display: inline-block;
-    margin-left: var(--spacing-small);
+    margin-left: var(--spacing-sm);
   }
-
+  
   header nav ul li:first-child {
     margin-left: 0;
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --color-header: rgb(64, 64, 64, 0.95);
+      --header-color: rgb(64, 64, 64, 0.95);
     }
   }
 </style>

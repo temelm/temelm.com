@@ -18,15 +18,16 @@
 <style>
   footer {
     font-size: 0.75rem;
-    padding: var(--spacing-large);
+    opacity: 0.75;
+    padding: var(--spacing-lg);
     text-align: center;
   }
 
   .social {
-    column-gap: var(--spacing-small);
+    column-gap: var(--spacing-sm);
     display: flex;
     justify-content: center;
-    margin-bottom: var(--spacing-small);
+    margin-bottom: var(--spacing-sm);
   }
 
   @media (prefers-color-scheme: dark) {

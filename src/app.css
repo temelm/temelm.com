@@ -1,27 +1,26 @@
 :root {
-  --border-radius: 0.125rem;
-  --color-accent: teal;
-  --color-background: whitesmoke;
-  --color-bcakground-PLACEHOLDER: white; /* @TODO: CHANGE VARIABLE NAME */
-  --color-border: #C0C0C0;
-  --color-text: #404040;
+  --accent-color: teal;
+  --background-color-primary: #F0F0F0;
+  --background-color-secondary: white;
+  --border-color: #C0C0C0;
+  --border-radius: 0.25rem;
   --font-family: "Roboto", sans-serif;
   --font-weight: 300;
   --font-weight-bold: 500;
   --max-width: 960px;
-  --max-width-portfolio-item-logo: 320px;
   --min-width: 320px;
-  --spacing-large: 2rem;
-  --spacing-medium: 1rem;
-  --spacing-small: 0.5rem;
+  --spacing-lg: 2rem;
+  --spacing-md: 1rem;
+  --spacing-sm: 0.5rem;
+  --spacing-xs: 0.25rem;
+  --text-color: #404040;
 
-  background-color: var(--color-background);
-  color: var(--color-text);
+  background-color: var(--background-color-primary);
+  color: var(--text-color);
   color-scheme: light dark;
   font-family: var(--font-family);
   font-size: 1.25rem;
   font-weight: var(--font-weight);
-  line-height: 1;
   text-rendering: optimizeLegibility;
 }
 
@@ -35,24 +34,27 @@ body {
   min-width: var(--min-width);
 }
 
+header, section {
+  border-bottom: 1px solid var(--border-color);
+}
+
 section {
-  border-bottom: 1px solid var(--color-border);
-  padding: var(--spacing-large);
+  padding: var(--spacing-lg);
   text-align: center;
 }
 
 h1 {
   font-size: 3rem;
   font-weight: var(--font-weight-bold);
-  margin-bottom: var(--spacing-large);
+  margin-bottom: var(--spacing-lg);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-accent: #FCE441;
-    --color-background: #404040;
-    --color-bcakground-PLACEHOLDER: #505050; /* @TODO: CHANGE VARIABLE NAME */
-    --color-border: gray;
-    --color-text: whitesmoke;
+    --accent-color: #FCE441;
+    --background-color-primary: #404040;
+    --background-color-secondary: #505050;
+    --border-color: #707070;
+    --text-color: #F0F0F0;
   }
 }
