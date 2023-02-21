@@ -17,11 +17,9 @@
 </header>
 
 <style>
-  :root {
-    --header-color: rgb(245, 245, 245, 0.95);
-  }
-
   header {
+    --header-color: rgb(245, 245, 245, 0.95);
+    
     background-color: var(--header-color);
     position: sticky;
     top: 0;
@@ -52,7 +50,7 @@
   }
 
   @media (prefers-color-scheme: dark) {
-    :root {
+    header {
       --header-color: rgb(64, 64, 64, 0.95);
     }
   }

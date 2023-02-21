@@ -4,6 +4,7 @@
   import Portfolio from './lib/Portfolio.svelte';
   import Contact from './lib/Contact.svelte';
   import Footer from './lib/Footer.svelte';
+  import ToastContainer from './lib/ToastContainer.svelte';
 </script>
 
 <Header />
@@ -11,3 +12,4 @@
 <Portfolio />
 <Contact />
 <Footer />
+<ToastContainer />

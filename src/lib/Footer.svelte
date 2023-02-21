@@ -1,13 +1,29 @@
 <script>
   import Link from './Link.svelte';
+  import GitHubIcon from './GitHubIcon.svelte';
+  import LinkedInIcon from './LinkedInIcon.svelte';
 
   const copyrightYear = new Date().getFullYear();
 </script>
 
 <footer>
   <div class="social">
-    <Link href="//github.com/temelm" target="_blank" text="GitHub" />
-    <Link href="//www.linkedin.com/in/mustafa-temel-b3908b2a" target="_blank" text="LinkedIn" />
+    <Link
+      href="//github.com/temelm"
+      target="_blank"
+      title="Opens in a new tab"
+      hasSvgIcon="true"
+    >
+      <GitHubIcon />
+    </Link>
+    <Link
+      href="//www.linkedin.com/in/mustafa-temel-b3908b2a"
+      target="_blank"
+      title="Opens in a new tab"
+      hasSvgIcon="true"
+    >
+      <LinkedInIcon />
+    </Link>
   </div>
   <div class="copyright">
     <span role="img" aria-label="Copyright">©️</span>
@@ -24,10 +40,10 @@
   }
 
   .social {
-    column-gap: var(--spacing-sm);
+    column-gap: var(--spacing-md);
     display: flex;
     justify-content: center;
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
   }
 
   @media (prefers-color-scheme: dark) {

@@ -7,6 +7,7 @@
   export let onClick = undefined;
   export let src = undefined;
   export let alt = undefined;
+  export let hasSvgIcon = undefined;
   export let text = undefined;
 
   if (target === '_blank') {
@@ -14,7 +15,7 @@
   }
 
   if (/^#/.test(href) && typeof onClick !== 'function') {
-    onClick = function (event) {
+    onClick = event => {
       event.preventDefault();
       let top = 0;
       if (href !== '#') {
@@ -28,13 +29,16 @@
         top,
         behavior: 'smooth'
       });
-    }
+    };
   }
 </script>
 
 <a {href} {target} {rel} class={className} {title} on:click={onClick}>
   {#if src}
     <img {src} {alt} />
+  {/if}
+  {#if hasSvgIcon}
+    <slot />
   {/if}
   {#if text}
     <span>{text}</span>

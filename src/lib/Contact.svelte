@@ -1,7 +1,31 @@
+<script>
+  import { showToast } from '../stores';
+
+  const onSubmit = event => {
+    const contactForm = event.target;
+    const submitButton = document.querySelector('#send'); // @TODO: REVIEW.
+    submitButton.setAttribute('disabled', 'true');
+    fetch('mail.php', {
+      method: 'post',
+      body: new FormData(contactForm)
+    }).then(response => response.text()).then(text => {
+      if (text === 'success') {
+        contactForm.reset();
+        showToast('Sent.', 'success');
+      } else {
+        showToast('Your message was not sent. Please try again.', 'error');
+      }
+      setTimeout(() => {
+        submitButton.removeAttribute('disabled');
+      }, 1000);
+    }).catch(error => console.error(error));
+  }
+</script>
+
 <section id="contact">
   <h1>Contact</h1>
   <div class="contact-form">
-    <form action="mail.php" method="post">
+    <form action="mail.php" method="post" on:submit|preventDefault={onSubmit}>
       <div class="contact-form-field">
         <input type="text" name="name" id="name" placeholder="Your name" required />
       </div>
