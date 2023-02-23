@@ -8,26 +8,19 @@
 
 <footer>
   <div class="social">
-    <Link
-      href="//github.com/temelm"
-      target="_blank"
-      title="Opens in a new tab"
-      hasSvgIcon="true"
-    >
+    <Link href="//github.com/temelm" rel="external" hasSvgIcon="true">
       <GitHubIcon />
     </Link>
-    <Link
-      href="//www.linkedin.com/in/mustafa-temel-b3908b2a"
-      target="_blank"
-      title="Opens in a new tab"
-      hasSvgIcon="true"
-    >
+    <Link href="//www.linkedin.com/in/mustafa-temel-b3908b2a" rel="external" hasSvgIcon="true">
       <LinkedInIcon />
     </Link>
   </div>
   <div class="copyright">
     <span role="img" aria-label="Copyright">©️</span>
-    <span>{copyrightYear} Mustafa Temel</span>
+    <span>
+      {copyrightYear}
+      <Link text="Mustafa Temel" />
+    </span>
   </div>
 </footer>
 

@@ -108,8 +108,7 @@
       <div class="portfolio-item-logo">
         <Link
           href={portfolioItem.url}
-          target="_blank"
-          title="Opens in a new tab"
+          rel="external"
           src={portfolioItem.logo}
           alt={portfolioItem.title}
           --img-max-width="256px"
@@ -149,7 +148,7 @@
         <div class="portfolio-item-link">
           <Link
             href={portfolioItem.url}
-            target="_blank"
+            rel="external"
             className="button"
             title="Opens in a new tab"
             text="Visit site"

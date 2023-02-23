@@ -18,12 +18,7 @@
   <span class="toast-text">
     <slot />
   </span>
-  <Link
-    className="toast-dismiss"
-    title="Dismiss message"
-    onClick={handleDismiss}
-    hasSvgIcon="true"
-  >
+  <Link className="toast-dismiss" title="Dismiss message" onClick={handleDismiss} hasSvgIcon="true">
     <CloseIcon width="1.125rem" />
   </Link>
 </div>
