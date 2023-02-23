@@ -41,6 +41,10 @@
     padding: var(--spacing-md);
   }
 
+  .toast:last-child {
+    margin-bottom: 0;
+  }
+
   .toast-info {
     background-color: #007AFF;
   }

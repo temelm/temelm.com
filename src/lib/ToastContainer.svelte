@@ -15,9 +15,11 @@
 
 <style>
   .toast-container {
-    min-width: var(--min-width);
+    max-width: var(--min-width);
+    min-width: 160px;
     position: fixed;
-    top: var(--spacing-lg);
+    top: 4rem;
+    width: 100%;
     z-index: 2;
   }
 
