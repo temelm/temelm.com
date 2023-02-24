@@ -92,7 +92,7 @@
     width: 100%;
   }
 
-  a:has(img) span {
+  a:has(img) span, a:has(svg) span {
     margin-left: var(--spacing-sm);
   }
 </style>
