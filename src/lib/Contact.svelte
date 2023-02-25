@@ -28,6 +28,7 @@
         .then(response => response.text())
         .then(text => {
           if (text === 'success') {
+            form.reset();
             showToast('Sent.', 'success');
           } else if (text === 'error') {
             showToast('Your message was not sent. Please try again.', 'error');
