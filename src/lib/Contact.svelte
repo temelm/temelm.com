@@ -2,24 +2,53 @@
   import { showToast } from '../stores';
 
   const onSubmit = event => {
-    const contactForm = event.target;
-    const submitButton = document.querySelector('#send'); // @TODO: REVIEW.
-    submitButton.setAttribute('disabled', 'true');
-    fetch('mail.php', {
-      method: 'post',
-      body: new FormData(contactForm)
-    }).then(response => response.text()).then(text => {
-      if (text === 'success') {
-        contactForm.reset();
-        showToast('Sent.', 'success');
-      } else {
-        showToast('Your message was not sent. Please try again.', 'error');
+    const form = event.target;
+
+    const data = {};
+    ['name', 'email', 'company', 'message'].forEach(fieldName => {
+      const field = form.querySelector(`[name="${fieldName}"]`);
+      if (field && field.value) {
+        data[fieldName] = field.value;
       }
-      setTimeout(() => {
-        submitButton.removeAttribute('disabled');
-      }, 1000);
-    }).catch(error => console.error(error));
-  }
+    });
+
+    if (data.name && data.email && data.message) {
+      const submitButton = document.querySelector('#send');
+      submitButton.setAttribute('disabled', 'true');
+
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8'
+        },
+        body: JSON.stringify(data)
+      };
+
+      fetch('mail.php', options)
+        .then(response => response.text())
+        .then(text => {
+          if (text === 'success') {
+            showToast('Sent.', 'success');
+          } else if (text === 'error') {
+            showToast('Your message was not sent. Please try again.', 'error');
+          } else {
+            if (!/temelm.com$/i.test(location.hostname)) {
+              console.log(text);
+            }
+          }
+          setTimeout(() => {
+            submitButton.removeAttribute('disabled');
+          }, 1000);
+        })
+        .catch(error => {
+          if (!/temelm.com$/i.test(location.hostname)) {
+            console.error(error);
+          }
+        });
+    } else {
+      showToast('Your message was not sent. Please try again.', 'error');
+    }
+  };
 </script>
 
 <section id="contact">

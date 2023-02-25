@@ -1,31 +1,29 @@
 <?php
-  function send () {
-    $result = 'error';
+  $response = 'error';
 
-    if (isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['email']) && !empty($_POST['email'])
-      && isset($_POST['message']) && !empty($_POST['message'])) {
-      $name = strip_tags($_POST['name']);
-      $email = strip_tags($_POST['email']);
-      $company = '';
-      if (isset($_POST['company']) && !empty($_POST['company'])) {
-        $company = '<p>Company: '.strip_tags($_POST['company']).'</p>';
-      }
+  if (isset($_POST)) {
+    $data = file_get_contents('php://input');
+    $data = json_decode($data);
+
+    $name = $data->{'name'};
+    $email = $data->{'email'};
+    $company = $data->{'company'};
+    $message = $data->{'message'};
+
+    if (!empty($name) && !empty($email) && !empty($message)) {
       $to = 'mustafatemel90@gmail.com';
-      $subject = 'Message from '.$name.' via temelm.com';
-      $message = '<p>Name: '.$name.'</p>'.'<p>Email: '.$email.'</p>'.$company.'<p>'.strip_tags($_POST['message']).'</p>';
-      $message = wordwrap($message, 120);
+      $subject = 'Message from '.$name.' via www.temelm.com';
+      $message = wordwrap($message, 100, "\r\n");
       $headers = 'From: '.$email."\r\n";
       $headers .= 'Reply-To: '.$email."\r\n";
-      $headers .= 'MIME-Version: 1.0'."\r\n";
-      $headers .= 'Content-Type: text/html; charset=UTF-8'."\r\n";
 
-      mail($to, $subject, $message, $headers);
-      
-      $result = 'success';
+      $isSent = mail($to, $subject, $message, $headers);
+
+      if ($isSent) {
+        $response = 'success';
+      }
     }
-
-    return $result;
   }
-  
-  echo send();
+
+  echo $response;
 ?>
