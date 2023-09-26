@@ -2,7 +2,10 @@
   "name": "temelm.com",
   "version": "4.0.0",
   "description": "https://www.temelm.com",
-  "keywords": ["mustafa temel", "tem consulting"],
+  "keywords": [
+    "mustafa temel",
+    "tem consulting"
+  ],
   "homepage": "https://github.com/temelm/temelm.com#readme",
   "bugs": "https://github.com/temelm/temelm.com/issues",
   "author": "Mustafa Temel",
@@ -19,8 +22,8 @@
     "cleanpreview": "npm run cleanbuild && npm run preview"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^2.0.2",
-    "svelte": "^3.55.1",
+    "@sveltejs/vite-plugin-svelte": "^2.4.1",
+    "svelte": "^4.0.0",
     "vite": "^4.1.0"
   },
   "private": true,
